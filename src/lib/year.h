@@ -1,1 +1,0 @@
-/* *  year.h *  MKLandscape * *  Created by Forschung on Fri Jun 23 2006. *  Copyright (c) 2006 Martin Koechy. All rights reserved. * */#include "rain.h"#include "grazing.h"#ifndef YEAR_GLOWA_H#define YEAR_GLOWA_Hvoid year (WATER* W, VEGETATION* V, climate_names climateID, float lsu, float rain);void calc_statistics (VEGETATION* V, WATER* W);#endif

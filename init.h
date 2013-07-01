@@ -3,6 +3,6 @@
 #ifndef INIT_H
 #define INIT_H
 
-void initialize (WATER* W);
+void initialize (WATER* W, float* cc);
 
 #endif

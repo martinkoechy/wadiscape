@@ -33,6 +33,7 @@ ANNRAIN::ANNRAIN(climate_names climate, scenario_names scenario)
 			scale_intercept = 2.2; scale_slope = 0.143; break;
 		case B2: MAP = -8 + 1.09 * MAP_CT; 
 			scale_intercept = 8; scale_slope = 0.06; break;
+		default: std::cerr << "no gamma parameters defined for this climate scenario" << std::endl;
 	}
 	
 	if (years_trans) {

@@ -125,9 +125,8 @@ class RNG
     { return (jcong = 69069 * jcong + 1234567); }
   ulong rand_int32()       // [0,2^32-1]
     { return ((MWC() ^ CONG()) + SHR3()); }
-/*  ulong rand_int()         // [0,2^32-1]
+  ulong rand_int()         // [0,2^32-1]
     { return ((MWC() ^ CONG()) + SHR3()); }
-	*/
 #elif ULONG_MAX == 18446744073709551615ul
 #ifdef RNG_C
 #warning "Compiling RNG class for 64-bit architecture"
@@ -146,11 +145,9 @@ class RNG
   ulong CONG() 
     { return (jcong = ((69069 * jcong + 1234567) & 0xfffffffful)); }
   ulong rand_int32()         // [0,2^32-1]
-    { return (((MWC() ^ CONG()) + SHR3()) & 0xfffffffful); 
-  /*
-	ulong rand_int()           // [0,2^64-1]
+    { return (((MWC() ^ CONG()) + SHR3()) & 0xfffffffful); }
+  ulong rand_int()           // [0,2^64-1]
     { return (rand_int32() | (rand_int32() << 32)); }
-	*/
 #endif
   double RNOR() {
     slong h = UL32toSL32(rand_int32()), i = h & 127;
@@ -166,24 +163,26 @@ class RNG
   void zigset();
 
   void init()
-    { z = w = jsr = jcong = ulong(time(0)) + tm; tm += 123457; }
-  void init(ulong z_, ulong w_, ulong jsr_, ulong jcong_ )
+	//{ z = w = jsr = jcong = ulong(19650929) + tm; tm += 123457; } // 20100715 (MK) fixed seed for testing
+	{ z = w = jsr = jcong = ulong(time(0)) + tm; tm += 123457; } // TODO: make random
+	
+	void init(ulong z_, ulong w_, ulong jsr_, ulong jcong_ )
     { z = z_; w = w_; jsr = jsr_; jcong = jcong_; }
 
   // For a faster but lower quality RNG, uncomment the following
   // line, and comment out the original definition of rand_int above.
   // In practice, the faster RNG will be fine for simulations
   // that do not simulate more than a few billion random numbers.
-  ulong rand_int() { return SHR3(); }
+  //ulong rand_int() { return SHR3(); }
   long rand_int31()          // [0,2^31-1]
     { return ((long) rand_int32() >> 1);}
-  double rand_closed01()     // [0,1]
+  double rand_closed01()     // [0,1], 0<= x <=1
     { return ((double) rand_int() / double(ULONG_MAX)); }
-  double rand_open01()       // (0,1)
+  double rand_open01()       // (0,1), 0 < x < 1
     { return (((double) rand_int() + 1.0) / (ULONG_MAX + 2.0)); }
-  double rand_halfclosed01() // [0,1)
+  double rand_halfclosed01() // [0,1), 0 <= x < 1
     { return ((double) rand_int() / (ULONG_MAX + 1.0)); }
-  double rand_halfopen01()   // (0,1]
+  double rand_halfopen01()   // (0,1], 0 < x <= 1
     { return (((double) rand_int() + 1.0) / (ULONG_MAX + 1.0)); }
 
   // Continuous Distributions

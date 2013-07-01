@@ -62,19 +62,8 @@ public:
 	void drawYear(void); ///< creates a new one-year time series
 	void drawYear(unsigned short yearID);  ///< not meaningful here, uses simple drawYear internally
 	void drawYear(unsigned short yearID, int windowSize); ///< not meaningful here, uses simple drawYear internally
-	// the following four functions should be inherited from RAINSERIES
-//	 float getRain (int day) const; ///< returns the rain for a specific day of year (Aug 1 = day 0)
-//	 float getAnnualRain (void) const; ///< returns the annual rain amount
-//	 float getPeriodRain (int start_day, int end_day) const; ///< returns the rain amount for a specific period, end day included
-//	 float getPeriodRain (month_names m) const; ///< returns the rain amount for a specific month
 	
 protected:
-		 // these are inherited from RAINSERIES
-//	   RNG Zzo;
-//	  float theAnnualRain;
-	 
-//	 std::valarray <float> rainVolume; ///< array of daily rain volume amount 
-// end inherited
 	 
 	 RAINPARAMETERS* pP; ///< pointer to the parameters
 	std::valarray <float> theDays; ///< array of days of year, i.e. 0 ... 364

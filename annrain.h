@@ -29,9 +29,9 @@ protected:
 	RNG Zzo;
 	
 public:
-		ANNRAIN(climate_names, scenario_names);
+	ANNRAIN(climate_names, scenario_names);
 	~ANNRAIN(){};
-	float get_annual_rain(int simulation_year); //< needs IPTC gamma values for each scenario
+	float get_annual_rain(int simulation_year); //< needs IPPC gamma values for each scenario
 };
 
 #endif

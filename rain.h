@@ -46,8 +46,7 @@ public:
 	void drawYear(void);
 	void drawYear(unsigned short yearID);
 	void drawYear(unsigned short yearID, int windowSize); // method to get a rain year within a certain period of years (windowSize)
-	float getAnnualRain(int){return RAINSERIES::getAnnualRain();}; // for compatibility with versions <3.2.4
-	
+
 protected:
 	unsigned int RGCM_window;
 

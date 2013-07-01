@@ -10,7 +10,7 @@
 #include <vector>
 #include <math.h>
 
-extern const unsigned short days_in_year;
+//extern const unsigned short days_in_year;
 
 RAINPARAMETERS::RAINPARAMETERS (int MAP, float dDMR)
 {

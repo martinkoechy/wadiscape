@@ -20,6 +20,8 @@
 			h = Zzo.uniform(2,7);
 		 else if (z < 0.90)
 			 h = Zzo.uniform(7,23);
+		 else
+			 h = 24;
 	 }
 	 else if (rainVolume[day] < 20) {
 		 if (z < 0.10)
@@ -80,44 +82,44 @@ float RAINSERIES::getPeriodRain(month_names month) const { //from:  0  31  61  9
 		mrain = getPeriodRain(int(month)*30,int(month)*30+29);
 	else {
 		switch (month) {
-			case Aug:
-				mrain = getPeriodRain(0, 30);
-				break; // 31
-			case Sep:
-				mrain = getPeriodRain(31, 60);
-				break; // 30
-			case Oct:
-				mrain = getPeriodRain(61, 91);
-				break; // 31
-			case Nov:
-				mrain = getPeriodRain(92, 121);
-				break; // 30
-			case Dec:
-				mrain = getPeriodRain(122, 151);
-				break; // 30
-			case Jan:
-				mrain = getPeriodRain(152, 182);
-				break; // 31
-			case Feb:
-				mrain = getPeriodRain(183, 212);
-				break; // 30
-			case Mar:
-				mrain = getPeriodRain(213, 243);
-				break; // 31
-			case Apr:
-				mrain = getPeriodRain(244, 273);
-				break; // 30
-			case May:
-				mrain = getPeriodRain(274, 304);
-				break; // 31
-			case Jun:
-				mrain = getPeriodRain(305, 334);
-				break; // 30
-			case Jul:
-				mrain = getPeriodRain(335, 364);
-				break; // 30
-			default:
-				std::cerr << "wrong month in year.cpp, line 24ff" << std::endl;
+		case Aug:
+			mrain = getPeriodRain(0, 30);
+			break; // 31
+		case Sep:
+			mrain = getPeriodRain(31, 60);
+			break; // 30
+		case Oct:
+			mrain = getPeriodRain(61, 91);
+			break; // 31
+		case Nov:
+			mrain = getPeriodRain(92, 121);
+			break; // 30
+		case Dec:
+			mrain = getPeriodRain(122, 151);
+			break; // 30
+		case Jan:
+			mrain = getPeriodRain(152, 182);
+			break; // 31
+		case Feb:
+			mrain = getPeriodRain(183, 212);
+			break; // 30
+		case Mar:
+			mrain = getPeriodRain(213, 243);
+			break; // 31
+		case Apr:
+			mrain = getPeriodRain(244, 273);
+			break; // 30
+		case May:
+			mrain = getPeriodRain(274, 304);
+			break; // 31
+		case Jun:
+			mrain = getPeriodRain(305, 334);
+			break; // 30
+		case Jul:
+			mrain = getPeriodRain(335, 364);
+			break; // 30
+		default:
+			std::cerr << "wrong month in year.cpp, line 24ff" << std::endl;
 		}
 	}
 	return mrain;
@@ -135,7 +137,7 @@ RGCM::RGCM(climate_names climate, scenario_names scenario,
 	std::ifstream rain_file;
 	std::stringstream rf_name;
 
-	rf_name << "transient_daily_" << climate << "_" << scenario << ".txt";
+	rf_name << "../rainfiles/transient_daily_" << climate << "_" << scenario << ".txt";
 
 	try {
 		rain_file.open(rf_name.str().c_str());

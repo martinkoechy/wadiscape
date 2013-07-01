@@ -5,8 +5,6 @@
 #include <cmath>
 #include "rng.h"
 
-#include <iostream>
-
 //________________________________________________________________________
 // Initialize the static component of RNG
 
